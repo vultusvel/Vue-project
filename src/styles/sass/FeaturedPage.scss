@@ -1,0 +1,72 @@
+@import "../sass//variables.scss";
+@import "../sass//mixins.scss";
+
+.cards {
+  &-card {
+    position: relative;
+    margin-right: 20px;    
+    :hover {
+        transform: translateY(-5px);
+
+      .cards-card__box__cart,
+      .cards-card__box__button {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+
+    &__box {
+      &__cart {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        opacity: 0;
+      }
+      &__button {
+        position: absolute;
+        top: 60%;
+        left: 30%;
+        z-index: 1;
+        width: 101px;
+        height: 36px;
+        background-color: $details-color;
+        border-radius: 4%;
+
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 14px;
+        text-align: center;
+        color: $secondary-text-color;
+
+        opacity: 0;
+      }
+    }
+    &__price {
+      margin-top: -18%;
+      background-color: $secondary-text-color;
+      box-shadow: 8px 24px 32px -16px #10175026;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &__title {
+        margin-bottom: 20px;
+        @include customStyles;
+      }
+      &__code {
+        margin-bottom: 5px;
+        @include customStylesCode;
+      }
+      &__price {
+        margin-bottom: 20px;
+        @include customStylesPrice;
+      }
+    }
+  }
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

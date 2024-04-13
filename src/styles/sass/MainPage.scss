@@ -1,0 +1,46 @@
+@import "../sass//variables.scss";
+
+.main {
+  background-color: #f2f0ff;
+  background-size: contain;
+  height: 700px;
+  &-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10%;
+    &-suptitle {
+      font-family: $text-font;
+      font-weight: $text-font-weight;
+      line-height: 20px;
+      letter-spacing: 1px;
+      text-align: center;
+      color: $secondary-color;
+      padding-bottom: 20px;
+    }
+    &-title {
+      font-size: 52px;
+      font-weight: $text-font-weight;
+      line-height: 64px;
+      letter-spacing: 1px;
+      text-align: center;
+      color: $primary-color;
+      padding-bottom: 20px;
+
+    }
+    &-subtitle {
+      font-family: $text-font;
+      font-weight: $text-font-weight;
+      line-height: 20px;
+      text-align: center;
+      color: $text-color;
+      padding-bottom: 20px;
+
+    }
+  }
+  &-button {
+    display: flex;
+    justify-content: center;
+  }
+}
