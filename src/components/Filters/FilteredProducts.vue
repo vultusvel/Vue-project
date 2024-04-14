@@ -1,6 +1,45 @@
 <template>
   <div class="row-filters__cards">
-    <div v-if="!check">
+    <div v-if="arr && arr.length > 0 && !props.queryString">
+      <div
+        v-for="(product, index) in arr"
+        :key="index"
+        class="row-filters__cards-box-card"
+      >
+        <img
+          class="row-filters__cards-box-card__img"
+          :width="270"
+          :height="200"
+          :src="product.imageSet[0]"
+          :alt="product.name"
+        />
+        <img
+          :width="46"
+          :height="46"
+          src="@/img/cart.svg"
+          alt="Cart"
+          class="row-filters__cards-box-card__cart"
+          @click="cart.addToCart(product)"
+        />
+        <div class="row-filters__cards-box-card__text">
+          <h3 class="row-filters__cards-box-card__text-title">
+            {{ product.name }}
+          </h3>
+          <div class="row-filters__cards-box-card__text-price">
+            <p class="row-filters__cards-box-card__text-price__price">
+              ${{ product.price }}
+            </p>
+            <p class="row-filters__cards-box-card__text-price__wasPrice">
+              <del>${{ product.wasPrice }}</del>
+            </p>
+          </div>
+          <p class="row-filters__cards-box-card__text-paragraph">
+            {{ product.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div v-else-if="!check">
       <p class="row-filters__cards__not-found">Not found</p>
     </div>
     <div v-else>
@@ -60,7 +99,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onBeforeMount, onMounted, ref, watch } from "vue";
 import { fetchProducts } from "../../services/fetchProducts";
 import { useProductsStore } from "../../stores/ProductsStore";
 // @ts-ignore
@@ -79,26 +118,23 @@ const checkedProducts = ref<ProductData | null>(null);
 const activePage = ref(1);
 const curretPage = ref(1);
 const check = ref(true);
-const productName = ref<any>("");
 const router = useRouter();
 const allProducts: any = useAllProductsStore();
+const search = ref(false);
+const arr = ref<any>([]);
 
-function searchProducts() {
-  const { name } = router.currentRoute.value.params;
-  console.log(name);
+const { name } = router.currentRoute.value.params;
 
-  const itemNames = allProducts?.products?.find(
-    (product) => product.name === name
-  );
+const itemName = Array.isArray(name)
+  ? name.map((item) => item.toLowerCase()).join("")
+  : name.toLowerCase();
 
-  if (itemNames) {
-    const productNameLowerCase = productName.value.toLowerCase();
-    const matchingProducts = itemNames.filter((name) =>
-      name.toLowerCase().includes(productNameLowerCase)
-    );
-    console.log("Matching products:", matchingProducts);
+allProducts?.productsAll?.filter((product) => {
+  if (product.name.toLowerCase().includes(itemName)) {
+    search.value = true;
+    arr.value.push(product);
   }
-}
+});
 
 function setActivePage(pageNumber: number) {
   if (toRenderPages.value === items.products?.pages) {
@@ -150,14 +186,15 @@ async function filteredProducts(pageNumber: number) {
 watch(props, () => {
   filteredProducts(curretPage.value);
 
-  console.log(toRenderPages);
+  console.log(arr.value);
 });
 
 onMounted(async () => {
-  searchProducts();
-  allProducts.fetchAllProdcuts();
-
   fetchProductsForPage(activePage.value);
+});
+
+onBeforeMount(() => {
+  allProducts.fetchAllProdcuts();
 });
 
 const toRenderPages = computed(() => {

@@ -201,7 +201,6 @@
       });
     }
   }
-  
     const paramString = urlParams.toString();
     queryString.value = `${paramString}`;
     console.log(queryString.value);

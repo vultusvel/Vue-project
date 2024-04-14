@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onBeforeMount } from "vue";
 import { useCartStore } from "../../stores/CartStore";
 import { useProductsStore } from "../../stores/ProductsStore";
 import { useRouter } from "vue-router";
@@ -73,6 +73,8 @@ const navigateToDetails = (productName: string) => {
 
 function setActivePage(pageNumber: number) {
   activePage.value = pageNumber;
+  localStorage.setItem("activePage", pageNumber.toString());
+
   fetchProductsForPage(pageNumber);
 }
 async function fetchProductsForPage(pageNumber: number): Promise<void> {
@@ -84,9 +86,16 @@ async function fetchProductsForPage(pageNumber: number): Promise<void> {
   items.fetchProdcuts(params);
   isLoading.value = true;
 }
+console.log(items.products);
 onMounted(() => {
+  const savedPage = localStorage.getItem("activePage");
+  if (savedPage) {
+    activePage.value = parseInt(savedPage);
+    fetchProductsForPage(activePage.value);
+  }
   fetchProductsForPage(activePage.value);
 });
+
 </script>
 
 <style lang="scss">

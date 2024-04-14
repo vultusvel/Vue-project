@@ -1,13 +1,14 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { fetchProducts } from "../services/fetchProducts";
+import { useLocalStorage } from "@vueuse/core";
 
 import { ProductData } from "../types/interfaces";
 
 export const useProductsStore = defineStore("ProductsStore", {
   state: () => {
     return {
-      products: ref<ProductData | null>(null),
+      products: useLocalStorage<ProductData | null>("products", null),
     };
   },
   actions: {

@@ -47,22 +47,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onBeforeMount } from "vue";
 import { useRouter } from "vue-router";
 import { useAllProductsStore } from "../../stores/AllProducts";
 import { useCartStore } from "../../stores/CartStore";
 
 const items: any = useAllProductsStore();
 const cart = useCartStore();
-
-console.log(items.products);
-
 const router = useRouter();
-
 const { name } = router.currentRoute.value.params;
 const itemNames = items?.products?.find((product) => product.name === name);
 
-onMounted(() => {
+onBeforeMount(() => {
   items.fetchAllProdcuts();
 });
 </script>

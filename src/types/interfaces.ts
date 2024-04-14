@@ -7,6 +7,7 @@ export interface Product {
   quantity: number;
   code: number;
   description: string;
+  isSale: boolean;
 }
 
 export interface ProductData {

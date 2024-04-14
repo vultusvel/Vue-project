@@ -17,7 +17,11 @@
     </div>
 
     <div class="leatest-cards">
-      <div v-for="(product, index) in displayedProducts" :key="index" class="leatest-box">
+      <div
+        v-for="(product, index) in displayedProducts"
+        :key="index"
+        class="leatest-box"
+      >
         <div class="leatest-cards-box">
           <img
             class="leatest-cards-box__img"
@@ -34,6 +38,13 @@
             class="leatest-cards-box__cart"
             @click="cart.addToCart(product)"
           />
+          <div v-if="product.isSale">
+            <img
+              class="leatest-cards-box__sale"
+              src="@/img/sale.svg"
+              :alt="product.name"
+            />
+          </div>
         </div>
         <div class="leatest-cards-box__text-box">
           <div class="leatest-cards-box__text-box__title">
