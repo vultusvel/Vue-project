@@ -1,0 +1,115 @@
+@import "../sass//variables.scss";
+@import "../sass//mixins.scss";
+
+.row-filters {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  position: relative;
+
+  &__filters {
+    &-box {
+      &-name {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+        color: $primary-color;
+        border-bottom: 1px solid $primary-color;
+        width: 150px;
+        margin: 20px 0;
+      }
+      &-filter-box {
+        &__checkbox {
+          width: 16px;
+          height: 16px;
+        }
+        &__label {
+          font-family: $text-font;
+          font-weight: 400;
+          line-height: 20px;
+          color: $text-color;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+  &__cards {
+    margin-bottom: 50px;
+    &__not-found {
+      font-size: 46px;
+      color: $primary-color;
+      font-weight: 500;
+      margin-top: 40px;
+      width: 650px;
+    }
+    &-box-card {
+      display: flex;
+      box-shadow: 8px 24px 32px -16px #10175026;
+      margin-bottom: 20px;
+      position: relative;
+
+      &__cart {
+        position: absolute;
+        top: 5%;
+        cursor: pointer;
+      }
+      &__text {
+        margin: 0 20px;
+        &-title {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 24px;
+          color: $primary-color;
+          margin: 20px 0;
+          width: 400px;
+        }
+        &-price {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+          &__price {
+            @include customSales;
+          }
+          &__wasPrice {
+            font-weight: 400;
+            line-height: 16px;
+            color: $text-color;
+            margin-left: 10px;
+          }
+        }
+        &-paragraph {
+          font-family: $text-font;
+          font-weight: 400;
+          line-height: 20px;
+          width: 400px;
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
+
+.pages {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  &-list {
+    font-weight: 400;
+    line-height: 20px;
+    color: $primary-color;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .active-page {
+    background-color: $secondary-color;
+    color: $secondary-text-color;
+  }
+}

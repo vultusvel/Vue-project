@@ -1,0 +1,68 @@
+@import "../sass//variables.scss";
+@import "../sass//mixins.scss";
+
+.type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  &-buttons {
+    margin-left: 20px;
+
+    font-family: $text-font;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: $primary-color;
+
+    &:active,
+    &:focus {
+      color: $secondary-color;
+    }
+  }
+}
+
+.leatest-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  justify-content: center;
+  &-box {
+    position: relative;
+    &__cart {
+      position: absolute;
+      top: 5%;
+      left: 0;
+      z-index: 1;
+      cursor: pointer;
+      opacity: 0;
+    }
+    &__text-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__title {
+        font-weight: 400;
+        line-height: 20px;
+        color: $primary-color;
+      }
+      &__price-box {
+        display: flex;
+        align-items: center;
+        &__sale {
+          @include customSales;
+        }
+        &__price {
+          @include customPrice;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+.leatest-box:hover .leatest-cards-box__cart {
+  opacity: 1;
+}

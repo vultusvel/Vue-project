@@ -6,6 +6,7 @@ export interface Product {
   imageSet: string[];
   quantity: number;
   code: number;
+  description: string;
 }
 
 export interface ProductData {
@@ -13,6 +14,10 @@ export interface ProductData {
   pages: number;
 }
 
+export interface RangeValues {
+  min: number;
+  max: number;
+}
 export interface Category {
   type: string;
   label: string;

@@ -17,7 +17,7 @@
     </div>
 
     <div class="leatest-cards">
-      <div v-for="(product, index) in displayedProducts" :key="index">
+      <div v-for="(product, index) in displayedProducts" :key="index" class="leatest-box">
         <div class="leatest-cards-box">
           <img
             class="leatest-cards-box__img"
@@ -25,6 +25,14 @@
             :height="272"
             :src="product.imageSet[0]"
             :alt="product.name"
+          />
+          <img
+            :width="46"
+            :height="46"
+            src="@/img/cart.svg"
+            alt="Cart"
+            class="leatest-cards-box__cart"
+            @click="cart.addToCart(product)"
           />
         </div>
         <div class="leatest-cards-box__text-box">
@@ -48,14 +56,17 @@
 <script setup lang="ts">
 import { fetchProducts } from "../../services/fetchProducts";
 import { ref, onMounted } from "vue";
-  // @ts-ignore
+// @ts-ignore
 import { Product } from "../../types/interfaces";
+import { useCartStore } from "../../stores/CartStore";
 
 const new_products = ref<Product[]>([]);
 const best_seller_products = ref<Product[]>([]);
 const featured_products = ref<Product[]>([]);
 const special_offer_products = ref([]);
 const displayedProducts = ref<Product[]>([]);
+
+const cart = useCartStore();
 
 async function newArrival() {
   const params = {
@@ -113,5 +124,5 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
-// @import "../../styles/sass/LeatestPage.scss";
+@import "../../styles/sass/LeatestPage.scss";
 </style>

@@ -34,5 +34,8 @@ export const useCartStore = defineStore("CartStore", {
         this.cart.splice(foundIndex, 1);
       }
     },
+    clearCart() {
+      this.cart = [];
+    },
   },
 });

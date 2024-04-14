@@ -4,10 +4,9 @@
 .cards {
   &-card {
     position: relative;
-    margin-right: 20px;    
-    :hover {
-        transform: translateY(-5px);
+    margin-right: 20px;
 
+    :hover {
       .cards-card__box__cart,
       .cards-card__box__button {
         opacity: 1;
@@ -30,7 +29,7 @@
         width: 101px;
         height: 36px;
         background-color: $details-color;
-        border-radius: 4%;
+        border-radius: 5px;
 
         font-size: 12px;
         font-weight: 600;
@@ -42,7 +41,9 @@
       }
     }
     &__price {
-      margin-top: -18%;
+      height: 120px;
+
+      margin-top: -20%;
       background-color: $secondary-text-color;
       box-shadow: 8px 24px 32px -16px #10175026;
       display: flex;
@@ -58,7 +59,8 @@
         @include customStylesCode;
       }
       &__price {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        width: 200px;
         @include customStylesPrice;
       }
     }
@@ -69,4 +71,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cards-card:hover {
+  transform: translateY(-10px);
+}
+
+.slider-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  &__slider {
+    width: 16px;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #febad7;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .active {
+    width: 20px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: $secondary-color;
+  }
 }

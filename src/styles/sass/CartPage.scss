@@ -1,0 +1,126 @@
+@import "../sass//variables.scss";
+@import "../sass//mixins.scss";
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  &-products {
+    &__product {
+      display: flex;
+      align-items: center;
+      position: relative;
+      margin: 10% 0;
+
+      &__img {
+        &-close {
+          position: absolute;
+          top: 2%;
+          cursor: pointer;
+        }
+      }
+      &__text-box {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        &__title {
+          width: 300px;
+        }
+        &__price {
+          @include customSales;
+        }
+      }
+      &__quantity {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 120px;
+        height: 40px;
+        border-radius: 10px;
+        border: 1px solid $cart-color;
+
+        &-number {
+          @include customSales;
+        }
+      }
+      &__total {
+        @include customSales;
+        margin-left: 40px;
+      }
+    }
+  }
+
+  &-costs {
+    margin: 40px 0;
+    &-box {
+      width: 304px;
+      height: 254px;
+      background-color: #f8f8fd;
+      border-radius: 10px;
+      &-total {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        padding: 10px 40px;
+        border-bottom: 1px solid $cart-color;
+        width: 272px;
+        margin: 0 auto;
+        padding-top: 30px;
+        &__title {
+          @include customTotal;
+        }
+        &__cost {
+          @include customStylesPrice;
+        }
+      }
+      &-shipping {
+        width: 272px;
+        margin: 0 auto;
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        padding: 10px 40px;
+        &__title {
+          font-family: $text-font;
+          font-size: 14px;
+          font-weight: 400;
+          color: #8a8fb9;
+        }
+        &__cost {
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 16px;
+          color: #8a8fb9;
+        }
+      }
+      &-b {
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        &-button {
+          width: 256px;
+          height: 52px;
+          border-radius: 10px;
+          background-color: $secondary-color;
+          color: $secondary-text-color;
+          font-weight: 600;
+          line-height: 20px;
+          text-align: center;
+        }
+      }
+    }
+    &-b {
+      display: flex;
+      justify-content: center;
+      &-button {
+        font-family: $text-font;
+        color: $secondary-color;
+        font-weight: 400;
+        line-height: 20px;
+        text-align: center;
+        margin: 20px 0;
+        cursor: pointer;
+      }
+    }
+  }
+}

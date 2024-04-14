@@ -221,6 +221,6 @@
   </script>
   
   <style lang="scss">
-  // @import "../../styles/sass/RowFilterPage.scss";
+  @import "../../styles/sass/RowFilterPage.scss";
   </style>
   

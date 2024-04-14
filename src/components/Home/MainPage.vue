@@ -10,7 +10,9 @@
         </p>
       </div>
       <div class="main-button">
-        <button class="reusable-button">Shop now</button>
+        <RouterLink class="header-breadcrumbs__link" to="/products">
+          <button class="reusable-button">Shop now</button>
+        </RouterLink>
       </div>
     </main>
   </div>

@@ -16,16 +16,24 @@
           :src="product.imageSet[0]"
           :alt="product.name"
         />
+        <img
+          :width="46"
+          :height="46"
+          src="@/img/cart.svg"
+          alt="Cart"
+          class="row-filters__cards-box-card__cart"
+          @click="cart.addToCart(product)"
+        />
         <div class="row-filters__cards-box-card__text">
           <h3 class="row-filters__cards-box-card__text-title">
             {{ product.name }}
           </h3>
           <div class="row-filters__cards-box-card__text-price">
             <p class="row-filters__cards-box-card__text-price__price">
-              {{ product.price }}
+              ${{ product.price }}
             </p>
             <p class="row-filters__cards-box-card__text-price__wasPrice">
-              <del>{{ product.wasPrice }}</del>
+              <del>${{ product.wasPrice }}</del>
             </p>
           </div>
           <p class="row-filters__cards-box-card__text-paragraph">
@@ -34,16 +42,18 @@
         </div>
       </div>
     </div>
-    <div class="pages">
-      <div
-        class="pages-list"
-        v-for="(product, index) in toRenderPages"
-        :key="index"
-        @click="setActivePage(product)"
-        :data-type="product"
-        :class="{ 'active-page': product === activePage }"
-      >
-        {{ product }}
+    <div v-if="check">
+      <div class="pages">
+        <div
+          class="pages-list"
+          v-for="(product, index) in toRenderPages"
+          :key="index"
+          @click="setActivePage(product)"
+          :data-type="product"
+          :class="{ 'active-page': product === activePage }"
+        >
+          {{ product }}
+        </div>
       </div>
     </div>
   </div>
@@ -58,11 +68,13 @@ import { ProductData } from "../../types/interfaces";
 
 import { useRouter } from "vue-router";
 import { useAllProductsStore } from "../../stores/AllProducts";
+import { useCartStore } from "../../stores/CartStore";
 
 const props = defineProps({
   queryString: String,
 });
 const items = useProductsStore();
+const cart = useCartStore();
 const checkedProducts = ref<ProductData | null>(null);
 const activePage = ref(1);
 const curretPage = ref(1);
