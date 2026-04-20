@@ -83,3 +83,19 @@ src/
 ## License
 
 This project is for educational/personal use. Add your preferred license if needed.
+
+
+<img width="1903" height="1023" alt="Screenshot 2026-04-20 at 14 31 11" src="https://github.com/user-attachments/assets/479b5e0e-e915-423e-bf8a-e286c7c21284" />
+<img width="1912" height="981" alt="Screenshot 2026-04-20 at 14 31 21" src="https://github.com/user-attachments/assets/b4bdf76b-fb3e-46b7-9388-a2a833cb9f14" />
+<img width="1890" height="1011" alt="Screenshot 2026-04-20 at 14 31 32" src="https://github.com/user-attachments/assets/444c7271-2112-4a3c-a24b-e06cdfd4b842" />
+<img width="1878" height="1021" alt="Screenshot 2026-04-20 at 14 31 45" src="https://github.com/user-attachments/assets/1a86d66a-ce01-45b2-a21b-1dc74e0846b6" />
+
+<img width="1863" height="1008" alt="Screenshot 2026-04-20 at 14 31 57" src="https://github.com/user-attachments/assets/bbbf36a9-40e7-4f44-9dd1-3b301ec1d0de" />
+<img width="1469" height="889" alt="Screenshot 2026-04-20 at 14 33 08" src="https://github.com/user-attachments/assets/54608504-7881-4f1e-bf58-09c7c10baf84" />
+
+
+
+
+
+
+
